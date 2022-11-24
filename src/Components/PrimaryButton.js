@@ -2,7 +2,7 @@ import React from "react";
 
 const PrimaryButton = ({ children }) => {
   return (
-    <button className="py-3 px-6 rounded bg-secondary text-base-100 font-semibold hover:bg-primary hover:text-base-100">
+    <button className="block w-full rounded bg-secondary px-12 py-3 text-sm font-medium text-white shadow hover:bg-base-100 hover:text-secondary focus:outline-none focus:ring active:bg-secondary sm:w-auto">
       {children}
     </button>
   );

@@ -1,17 +1,25 @@
-import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useRef, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../Asset/logo.png";
+import { AuthContext } from "../Context/ContextApi";
 const Navbar = () => {
   const [state, setState] = useState(false);
   const navRef = useRef();
 
-  // Replace javascript:void(0) path with your path
+  const { logout } = useContext(AuthContext);
+  const handleLogout = () => {
+    logout()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const navigation = [
-    { title: "Customers", path: "/blog" },
-    { title: "Careers", path: "javascript:void(0)" },
-    { title: "Guides", path: "javascript:void(0)" },
-    { title: "Partners", path: "javascript:void(0)" },
-    { title: "Teams", path: "javascript:void(0)" },
+    { title: "Home", path: "/" },
+    { title: "Categories", path: "/categories" },
+    { title: "Dashboard", path: "/dashboard)" },
     { title: "Blog", path: "/blog" },
   ];
 
@@ -33,19 +41,16 @@ const Navbar = () => {
   }, [state]);
 
   return (
-    <nav ref={navRef} className="bg-gray-100 w-full top-0 z-20 ">
-      <div className="items-center px-4 max-w-screen-xl mx-auto lg:flex lg:px-8">
-        <div className="flex items-center justify-between py-3 lg:py-4 lg:block">
-          <a
-            href="javascript:void(0)"
-            className="flex justify-center items-center"
-          >
+    <nav ref={navRef} className="w-full top-0 z-20 py-2 bg-gray-100">
+      <div className="items-center px-4 max-w-screen-xl mx-auto lg:flex lg:px-8 z-10 bg-gray-100">
+        <div className="flex items-center justify-between py-3 lg:py-4 lg:block ">
+          <NavLink to="/" className="flex justify-center items-center">
             <img className="w-8 h-8 mr-2" src={logo} alt="Bookmart logo" />
             <p className="text-3xl font-bold text-primary">Bookmart</p>
-          </a>
+          </NavLink>
           <div className="lg:hidden">
             <button
-              className="text-gray-700 outline-none p-2 rounded-md focus:border-gray-400 focus:border"
+              className="text-primary outline-none p-2 rounded-md focus:border-primary focus:border"
               onClick={() => setState(!state)}
             >
               {state ? (
@@ -87,29 +92,41 @@ const Navbar = () => {
         >
           <div>
             <ul className="flex flex-col-reverse space-x-0 lg:space-x-6 lg:flex-row">
-              <li className="mt-8 mb-8 lg:mt-0 lg:mb-0">
-                <a
-                  href="javascript:void(0)"
-                  className="text-gray-600 hover:text-indigo-600"
-                >
-                  Contact
-                </a>
-              </li>
               <li className="mt-4 lg:mt-0">
-                <a
-                  href="javascript:void(0)"
-                  className="py-3 px-4 text-center border text-gray-600 hover:text-indigo-600 rounded-md block lg:inline lg:border-0"
+                <NavLink
+                  to="/login"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "font-semibold text-lg py-3 px-4 text-center text-neutral rounded-md shadow block lg:inline bg-primary"
+                      : "font-semibold text-lg py-3 px-4 text-center text-primary  rounded-md shadow block lg:inline hover:text-neutral hover:bg-primary"
+                  }
                 >
                   Login
-                </a>
+                </NavLink>
               </li>
               <li className="mt-8 lg:mt-0">
-                <a
-                  href="javascript:void(0)"
-                  className="py-3 px-4 text-center text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow block lg:inline"
+                <NavLink
+                  to="/register"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "font-semibold text-lg py-3 px-4 text-center text-neutral rounded-md shadow block lg:inline bg-primary"
+                      : "font-semibold text-lg py-3 px-4 text-center text-primary  rounded-md shadow block lg:inline hover:text-neutral hover:bg-primary"
+                  }
                 >
-                  Sign Up
-                </a>
+                  Register
+                </NavLink>
+              </li>
+              <li onClick={handleLogout} className="mt-8 mb-8 lg:mt-0 lg:mb-0">
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "font-semibold text-lg py-3 px-4 text-center text-neutral rounded-md shadow block lg:inline bg-primary"
+                      : "font-semibold text-lg py-3 px-4 text-center text-primary  rounded-md shadow block lg:inline hover:text-neutral hover:bg-primary"
+                  }
+                >
+                  Logout
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -118,7 +135,16 @@ const Navbar = () => {
               {navigation.map((item, idx) => {
                 return (
                   <li key={idx} className="text-gray-600 hover:text-indigo-600">
-                    <Link to={item.path}>{item.title}</Link>
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive
+                          ? "font-semibold text-lg py-3 px-4 text-center text-neutral rounded-md shadow block lg:inline bg-primary"
+                          : "font-semibold text-lg py-3 px-4 text-center text-primary  rounded-md shadow block lg:inline hover:text-neutral hover:bg-primary"
+                      }
+                      to={item.path}
+                    >
+                      {item.title}
+                    </NavLink>
                   </li>
                 );
               })}

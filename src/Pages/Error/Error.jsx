@@ -32,7 +32,7 @@ const Error = () => {
             )}
 
             <Link to="/">
-              <PrimaryButton>GO BACK</PrimaryButton>
+              <PrimaryButton>Go Back</PrimaryButton>
             </Link>
           </div>
         </div>

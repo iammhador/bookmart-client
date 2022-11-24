@@ -12,11 +12,11 @@ Your website has to be related to selling used (second-hand products) with the a
 
 4. It is important to note that your UX design should be good. For example, suppose a user does not see data when they visit a route, does not see the ad after posting the advertisement without reloading the site, or gets logged out when visiting a private route right after signing up. In that case, etc., then **you may lose a significant mark for that**.
 
-## Main Requirements
+//@ Main Requirements
 
 1. Your homepage will have a **navbar** , a banner/slider, Advertised items, second-hand **product categories** section and a realistic **footer**.
 
-2. Add **one** extra section on the home page. Make sure it is unique and relevant to your website.
+//* 2. Add **one** extra section on the home page. Make sure it is unique and relevant to your website.
 
 3. **You will have to decide what would be the categories of the second-hand product you have selected.** For instance, if your website is about second-hand furniture, you can divide your categories into the bedroom, kitchen, dining room, etc.; if it is about second-hand car, your categories can be a Microbus, luxury car, electic car, etc. Or you can categorize second-hand products under brand names if you want. However, make sure it is relevant. You will need at least 3 categories, each with at least 2 products.
 
@@ -28,7 +28,7 @@ Your website has to be related to selling used (second-hand products) with the a
 
    **Note:** Do not apply email verification as it will be an inconvenience for the examiner. It is important for the examiner to be able to check your authentication without any hassle. If you want, you can add email verification after getting the assignment result.
 
-7. If a user(buyer/seller/admin) is logged in, they will see **logout** (should be working) and another option on the header called Dashboard. The dashboard routes will change based on the users:
+//& 7. If a user(buyer/seller/admin) is logged in, they will see **logout** (should be working) and another option on the header called Dashboard. The dashboard routes will change based on the users:
 
    **Buyers will see:** My orders(see bonus requirement 7),
 
@@ -46,16 +46,16 @@ Your website has to be related to selling used (second-hand products) with the a
 
 12. In the **All Sellers,** the Admin will see the sellers. On the **All Buyers** route, the Admin can see all the Buyers. If the Admin wants, he can delete any buyers or sellers.
 
-13. On the navbar, there will be a Blogs route. This will be an open route (anyone visiting your website will see it). You will have to answer all the questions, and they are
+//* 13. On the navbar, there will be a Blogs route. This will be an open route (anyone visiting your website will see it). You will have to answer all the questions, and they are
 
-    13.1 What are the different ways to manage a state in a React application?
+//*     13.1 What are the different ways to manage a state in a React application?
 
-    13.2 How does prototypical inheritance work?
+//*     13.2 How does prototypical inheritance work?
 
-    13.3 What is a unit test? Why should we write unit tests?
+//*     13.3 What is a unit test? Why should we write unit tests?
 
-    13.4 React vs. Angular vs. Vue?
+//*     13.4 React vs. Angular vs. Vue?
 
-14. Create a meaningful 404 page (not found page). Add a meaningful image on the 404 page.
+//* 14. Create a meaningful 404 page (not found page). Add a meaningful image on the 404 page.
 
 15. Use a database to store information. It could be MongoDB atlas or any other database. Save the users in the database

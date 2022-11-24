@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
-import { BsGoogle } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { BsGoogle } from "react-icons/bs";
 import { AuthContext } from "../Context/ContextApi";
 
-const Login = () => {
-  const { googleLogin, login } = useContext(AuthContext);
+const Register = () => {
+  const { googleLogin, register } = useContext(AuthContext);
 
-  //# Google Login :
   const handleGoogleLogin = () => {
     googleLogin()
       .then((userCredential) => {
@@ -16,16 +15,15 @@ const Login = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+        // ..
       });
   };
-
-  //# Login :
-  const handleLogin = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    login(email, password)
+    register(email, password)
       .then((userCredential) => {
         console.log(userCredential);
       })
@@ -42,16 +40,16 @@ const Login = () => {
         <div class="container px-5 py-24 mx-auto">
           <div class="flex flex-col text-center mb-12 ">
             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-              Login
+              Register
             </h1>
             <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-              If you haven an account, Please login.
+              If you haven't an account, Please Register.
             </p>
           </div>
           <div class="lg:w-1/2 md:w-2/3 mx-auto">
             <div class="flex flex-wrap -m-2">
               <form
-                onSubmit={handleLogin}
+                onSubmit={handleRegister}
                 class="p-2 w-full border-b-2 border-black"
               >
                 <div className="my-2">
@@ -84,14 +82,30 @@ const Login = () => {
                   />
                 </div>
 
+                <div className="my-2">
+                  <label
+                    for="test"
+                    class="leading-7 text-sm text-gray-600 font-semibold"
+                  >
+                    Choose your type
+                  </label>
+                  <br />
+                  <select
+                    name="option"
+                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  >
+                    <option selected>User</option>
+                    <option>Seller</option>
+                  </select>
+                </div>
                 <div class="pt-2 text-center flex mb-5">
                   <button className="block w-full rounded bg-secondary px-12 py-3 text-sm font-medium text-white shadow hover:bg-base-100 hover:text-secondary focus:outline-none focus:ring active:bg-secondary sm:w-auto">
-                    Login
+                    Register
                   </button>
                   <p className="my-auto ml-5 text-base font-semibold">
-                    Don't have an account?{" "}
-                    <Link to="/register" className="text-secondary">
-                      Register
+                    Already have an account?{" "}
+                    <Link to="/login" className="text-secondary">
+                      Login
                     </Link>
                   </p>
                 </div>
@@ -111,4 +125,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
