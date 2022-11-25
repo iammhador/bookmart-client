@@ -21,10 +21,10 @@ const Banner = () => {
 
             <div className="mt-8 flex  justify-center gap-4">
               <Link
-                to="/login"
+                to="/register"
                 className="block w-full rounded bg-secondary px-12 py-3 text-sm font-medium text-white shadow hover:bg-base-100 hover:text-secondary focus:outline-none focus:ring active:bg-secondary sm:w-auto"
               >
-                Login
+                Register
               </Link>
 
               <Link

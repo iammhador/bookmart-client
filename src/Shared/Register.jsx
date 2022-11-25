@@ -1,61 +1,90 @@
-import React, { useContext } from "react";
+import { React, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { BsGoogle } from "react-icons/bs";
 import { AuthContext } from "../Context/ContextApi";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const { googleLogin, register } = useContext(AuthContext);
+  const [userDetails, setUserDetails] = useState("");
+
+  fetch(`${process.env.REACT_APP_API}/users`, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(userDetails),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+    });
 
   const handleGoogleLogin = () => {
     googleLogin()
       .then((userCredential) => {
-        console.log(userCredential);
+        const userInfo = {
+          email: userCredential?.user?.email,
+          uid: userCredential?.user?.uid,
+          role: "none",
+        };
+        setUserDetails(userInfo);
+        toast.success("Successfully Logged");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
-        // ..
       });
   };
+
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    const option = form.option.value;
+
     register(email, password)
       .then((userCredential) => {
-        console.log(userCredential);
+        toast.success("Successfully Logged");
+        form.reset("");
+        const userInfo = {
+          email: userCredential?.user?.email,
+          uid: userCredential?.user?.uid,
+          role: option,
+        };
+        setUserDetails(userInfo);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
-        // ..
       });
   };
+
   return (
-    <div>
-      <section class="my-auto text-gray-600 body-font relative">
-        <div class="container px-5 py-24 mx-auto">
-          <div class="flex flex-col text-center mb-12 ">
-            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+    <div className="my-20">
+      <section className="my-auto text-gray-600 body-font relative">
+        <div className="container px-5 py-24 mx-auto  sm:w-full md:w-full lg:w-3/5 shadow-2xl rounded-xl">
+          <div className="flex flex-col text-center mb-12">
+            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
               Register
             </h1>
-            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+            <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
               If you haven't an account, Please Register.
             </p>
           </div>
-          <div class="lg:w-1/2 md:w-2/3 mx-auto">
-            <div class="flex flex-wrap -m-2">
+          <div className="lg:w-1/2 md:w-2/3 mx-auto">
+            <div className="flex flex-wrap -m-2">
               <form
                 onSubmit={handleRegister}
-                class="p-2 w-full border-b-2 border-black"
+                className="p-2 w-full border-b-2 border-black"
               >
                 <div className="my-2">
                   <label
-                    for="email"
-                    class="leading-7 text-sm text-gray-600 font-semibold"
+                    htmlFor="email"
+                    className="leading-7 text-sm text-gray-600 font-semibold"
                   >
                     Email
                   </label>
@@ -63,14 +92,15 @@ const Register = () => {
                     type="email"
                     id="email"
                     name="email"
-                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    required
+                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
 
                 <div className="my-2">
                   <label
-                    for="password"
-                    class="leading-7 text-sm text-gray-600 font-semibold"
+                    htmlFor="password"
+                    className="leading-7 text-sm text-gray-600 font-semibold"
                   >
                     Password
                   </label>
@@ -78,14 +108,15 @@ const Register = () => {
                     type="password"
                     id="password"
                     name="password"
-                    class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    required
+                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
 
                 <div className="my-2">
                   <label
-                    for="test"
-                    class="leading-7 text-sm text-gray-600 font-semibold"
+                    htmlFor="test"
+                    className="leading-7 text-sm text-gray-600 font-semibold"
                   >
                     Choose your type
                   </label>
@@ -98,7 +129,7 @@ const Register = () => {
                     <option>Seller</option>
                   </select>
                 </div>
-                <div class="pt-2 text-center flex mb-5">
+                <div className="pt-2 text-center flex mb-5">
                   <button className="block w-full rounded bg-secondary px-12 py-3 text-sm font-medium text-white shadow hover:bg-base-100 hover:text-secondary focus:outline-none focus:ring active:bg-secondary sm:w-auto">
                     Register
                   </button>

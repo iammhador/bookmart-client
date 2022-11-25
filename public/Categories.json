@@ -1,0 +1,74 @@
+[
+  {
+    "productId": "FB01",
+    "categoryId": "fb",
+    "ProductName": "Norwegian Wood",
+    "ProductCategory": "Fictional Books",
+    "ProductLocation": "Dhaka, Karonbazar",
+    "ProductUseTime": "90",
+    "ProductOriginalPrice": "150",
+    "ProductResalePrice": "80",
+    "post-time": "24 Nov",
+    "Product-picture": "https://i.ibb.co/7CL13fH/11297-SY475.jpg"
+  },
+  {
+    "productId": "FB02",
+    "categoryId": "fb",
+    "ProductName": "Thousand Splendid Sun",
+    "ProductCategory": "Fictional Books",
+    "ProductLocation": "Khulna, Dumuria",
+    "ProductUseTime": "130",
+    "ProductOriginalPrice": "250",
+    "ProductResalePrice": "120",
+    "postTime": "24 Nov",
+    "Product-picture": "https://i.ibb.co/y6rg4MD/128029-SY475.jpg"
+  },
+  {
+    "productId": "NFB02",
+    "categoryId": "nfb",
+    "ProductName": "Atomic Habits",
+    "ProductCategory": "Non Fictional Books",
+    "ProductLocation": "Cumilla, Goripur",
+    "ProductUseTime": "330",
+    "ProductOriginalPrice": "350",
+    "ProductResalePrice": "110",
+    "postTime": "24 Nov",
+    "ProductPicture": "https://i.ibb.co/WsYwQz2/40121378.jpg"
+  },
+  {
+    "productId": "NFB02",
+    "categoryId": "nfb",
+    "ProductName": "Thinking, Fast And Slow",
+    "ProductCategory": "Non Fictional Books",
+    "ProductLocation": "Dhaka, Banani",
+    "ProductUseTime": "450",
+    "ProductOriginalPrice": "280",
+    "ProductResalePrice": "70",
+    "postTime": "24 Nov",
+    "ProductPicture": "https://i.ibb.co/TmmyPF5/11468377.jpg"
+  },
+  {
+    "productId": "EDB01",
+    "categoryId": "eb",
+    "ProductName": "Selected Poems John Keats",
+    "ProductCategory": "Educational Books",
+    "ProductLocation": "Dhaka, Uttora",
+    "ProductOriginalPrice": "150",
+    "ProductResalePrice": "50",
+    "ProductUseTime": "390",
+    "postTime": "24 Nov",
+    "ProductPicture": "https://i.ibb.co/cyts8vz/3234369.jpg"
+  },
+  {
+    "productId": "EDB02",
+    "categoryId": "eb",
+    "ProductName": "Advance Learner",
+    "ProductCategory": "Educational Books",
+    "ProductLocation": "Dhaka, Khilgaon",
+    "ProductOriginalPrice": "280",
+    "ProductResalePrice": "140",
+    "ProductUseTime": "640",
+    "postTime": "24 Nov",
+    "ProductPicture": "https://i.ibb.co/TTnd0Gv/28727418-SX318.jpg"
+  }
+]

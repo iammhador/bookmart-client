@@ -3,6 +3,11 @@ import deliveryMan from "../../Asset/delivery-man.png";
 const Delivery = () => {
   return (
     <div className="my-20">
+      <div>
+        <h2 className="text-5xl font-extrabold text-secondary text-center mb-10 uppercase">
+          Delivery Option
+        </h2>
+      </div>
       <div className="container mx-auto shadow-lg py-5 px-10 rounded-lg">
         <div className="flex flex-col lg:flex-row items-center justify-between">
           <img

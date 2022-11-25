@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../Context/ContextApi";
 
 const Blog = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user);
   return (
     <div className="my-20 w-5/6 mx-auto">
       <h3 className="text-accent text-4xl text-center font-semibold uppercase">

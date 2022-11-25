@@ -37,9 +37,9 @@ const Login = () => {
       });
   };
   return (
-    <div>
+    <div className="my-20">
       <section class="my-auto text-gray-600 body-font relative">
-        <div class="container px-5 py-24 mx-auto">
+        <div class="container px-5 py-24 mx-auto sm:w-full md:w-full lg:w-3/5 shadow-2xl rounded-xl">
           <div class="flex flex-col text-center mb-12 ">
             <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
               Login

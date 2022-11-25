@@ -1,0 +1,17 @@
+[
+  {
+    "categoryId": "fb",
+    "categoryName": "Fictional Books",
+    "categoryImage": "https://i.ibb.co/xgmw65B/FIC-promo-super-Jumbo.png"
+  },
+  {
+    "categoryId": "nfb",
+    "categoryName": "Non Fictional Books",
+    "categoryImage": " https://i.ibb.co/RBxs0wJ/NONFIC-promo-super-Jumbo.png"
+  },
+  {
+    "categoryId": "eb",
+    "categoryName": "Educational Books",
+    "categoryImage": "https://i.ibb.co/0QnWxnL/inaki-del-olmo-NIJu-EQw0-RKg-unsplash-1.jpg"
+  }
+]
