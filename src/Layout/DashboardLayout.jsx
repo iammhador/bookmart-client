@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import Footer from "../Shared/Footer";
 import Navbar from "../Shared/Navbar";
 import userProfile from "../Asset/user.png";
+import { AuthContext } from "../Context/ContextApi";
 
 const DashboardLayout = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user);
   return (
     <div>
       <Navbar />
@@ -18,13 +21,15 @@ const DashboardLayout = () => {
           <ul className="menu p-4 w-80 bg-gray-100 text-base-conten">
             <img
               className="rounded-full w-2/5 mx-auto"
-              src={userProfile}
+              src={user?.photoURL ? user?.photoURL : userProfile}
               alt="User Profile"
             />
             <div className="my-1">
-              <p className="text-center font-medium">Mehedy Hasan Ador</p>
               <p className="text-center font-medium">
-                <span className="text-secondary">Role : </span> User
+                {user?.displayName ? user?.displayName : "No Data Found"}
+              </p>
+              <p className="text-center font-medium">
+                <span className="text-secondary">Email : </span> {user?.email}
               </p>
             </div>
             <Link to="/dashboard">

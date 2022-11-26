@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-
+import profile from "../../Asset/user.png";
 const AllUser = () => {
   const { data: users = [] } = useQuery({
     queryKey: ["users"],
@@ -24,7 +24,14 @@ const AllUser = () => {
                       scope="col"
                       class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
                     >
-                      Id
+                      Profile Image
+                    </th>
+
+                    <th
+                      scope="col"
+                      class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal"
+                    >
+                      Username
                     </th>
                     <th
                       scope="col"
@@ -47,21 +54,22 @@ const AllUser = () => {
                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <div class="flex items-center">
                             <div class="flex-shrink-0">
-                              <a href="#" class="block relative">
-                                <img
-                                  alt="profil"
-                                  src="/images/person/6.jpg"
-                                  class="mx-auto object-cover rounded-full h-10 w-10 "
-                                />
-                              </a>
-                            </div>
-                            <div class="ml-3">
-                              <p class="text-gray-900 whitespace-no-wrap">
-                                {user?.uid}
-                              </p>
+                              <img
+                                alt="profile"
+                                src={user?.image ? user?.image : profile}
+                                class="mx-auto object-cover rounded-full h-20 w-20 shadow-lg p-2"
+                              />
                             </div>
                           </div>
                         </td>
+
+                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                          <p class="text-gray-900 whitespace-no-wrap">
+                            {" "}
+                            {user?.username ? user?.username : "No data found"}
+                          </p>
+                        </td>
+
                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <p class="text-gray-900 whitespace-no-wrap">
                             {" "}

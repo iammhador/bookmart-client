@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import app from "../Firebase/FirebaseConfig";
 
@@ -35,6 +36,14 @@ const ContextApi = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  //# Update Profile & Image :
+  const updateProfileAndImage = (name, photo) => {
+    updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    });
+  };
+
   //# Logout :
   const logout = () => {
     setLoading(false);
@@ -50,7 +59,15 @@ const ContextApi = ({ children }) => {
     return () => unSub();
   }, []);
 
-  const authInfo = { user, loading, googleLogin, register, login, logout };
+  const authInfo = {
+    user,
+    loading,
+    googleLogin,
+    register,
+    login,
+    updateProfileAndImage,
+    logout,
+  };
   return (
     <div>
       <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
