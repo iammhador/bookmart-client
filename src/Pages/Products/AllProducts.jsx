@@ -1,7 +1,7 @@
 import React from "react";
 import { CiLocationOn, CiSignpostDuo1, CiClock1 } from "react-icons/ci";
 
-const AllProduct = ({ cat }) => {
+const AllProducts = ({ cat }) => {
   console.log(cat);
   const {
     ProductName,
@@ -79,4 +79,4 @@ const AllProduct = ({ cat }) => {
   );
 };
 
-export default AllProduct;
+export default AllProducts;

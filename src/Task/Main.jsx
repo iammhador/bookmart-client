@@ -59,3 +59,21 @@ Your website has to be related to selling used (second-hand products) with the a
 //* 14. Create a meaningful 404 page (not found page). Add a meaningful image on the 404 page.
 
 15. Use a database to store information. It could be MongoDB atlas or any other database. Save the users in the database
+
+
+picture, name, location, resale price, original price, years of use, the time when it got posted, the seller's name; if the seller is verified, there will be a blue tick next to their name and a **Book now** button
+   
+   
+// Name
+//Resale Price
+// Original Price
+//Days Of Use 
+//Post Time
+// Seller Name
+
+//Button
+
+//Location
+Picture
+
+Verified

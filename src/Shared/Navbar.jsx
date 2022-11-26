@@ -19,7 +19,8 @@ const Navbar = () => {
   };
   const navigation = [
     { title: "Home", path: "/" },
-    { title: "Categories", path: "/categories" },
+    { title: "Products", path: "/products" },
+    { title: "Add Product", path: "/add-product" },
     { title: "Dashboard", path: "/dashboard" },
     { title: "Blog", path: "/blog" },
   ];
@@ -49,7 +50,7 @@ const Navbar = () => {
             <>
               <label
                 htmlFor="bookmart-drawer"
-                className="text-primary outline-none p-2 rounded-md focus:border-primary focus:border"
+                className="text-primary outline-none p-2 rounded-md focus:border-primary focus:border hover:text-secondary"
               >
                 {state ? (
                   <>

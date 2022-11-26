@@ -9,18 +9,12 @@ const DashboardLayout = () => {
     <div>
       <Navbar />
       <div className="drawer drawer-mobile">
-        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+        <input id="bookmart-drawer" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content ">
           <Outlet />
-          <label
-            htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
-          >
-            Open drawer
-          </label>
         </div>
         <div className="drawer-side">
-          <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
+          <label htmlFor="bookmart-drawer" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80 bg-gray-100 text-base-conten">
             <img
               className="rounded-full w-2/5 mx-auto"

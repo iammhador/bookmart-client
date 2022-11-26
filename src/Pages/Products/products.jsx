@@ -1,11 +1,11 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import AllProduct from "./AllProduct";
-const Categories = () => {
+import AllProducts from "./AllProducts";
+const Products = () => {
   const { data: categories = [] } = useQuery({
     queryKey: ["categories"],
     queryFn: async () => {
-      const res = await fetch(`${process.env.REACT_APP_API}/categories`);
+      const res = await fetch(`${process.env.REACT_APP_API}/products`);
       const data = await res.json();
       return data;
     },
@@ -19,11 +19,11 @@ const Categories = () => {
       </div>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {categories.map((cat) => (
-          <AllProduct cat={cat} key={cat._id} />
+          <AllProducts cat={cat} key={cat._id} />
         ))}
       </div>
     </div>
   );
 };
 
-export default Categories;
+export default Products;
