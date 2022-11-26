@@ -9,6 +9,9 @@ import Login from "../Shared/Login";
 import Register from "../Shared/Register";
 import AddProduct from "../Pages/AddProduct/AddProduct";
 import Products from "../Pages/Products/products";
+import MatchCategory from "../Pages/Home/MatchCategory";
+import AddProducts from "../Pages/Dashboard/AddProducts";
+import MyOrder from "../Pages/Dashboard/MyOrder";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -26,11 +29,23 @@ const router = createBrowserRouter([
         path: "/products",
         element: <Products />,
       },
+      // {
+      //   path: "/add-product",
+      //   element: <AddProduct />,
+      // },
+      // {
+      //   path: "/add-products",
+      //   element: <AddProducts />,
+      // },
       {
-        path: "//add-product",
-        element: <AddProduct />,
+        path: "/products/:categoryName",
+        element: <MatchCategory />,
+        loader: async ({ params }) => {
+          return fetch(
+            `http://localhost:5000/products?categoryName=${params.categoryName}`
+          );
+        },
       },
-
       {
         path: "/blog",
         element: <Blog />,
@@ -50,7 +65,8 @@ const router = createBrowserRouter([
     element: <DashboardLayout />,
     errorElement: <Error />,
     children: [
-      { path: "/dashboard", element: <PostProduct /> },
+      { path: "/dashboard/my-order", element: <MyOrder /> },
+      { path: "/dashboard/add-product", element: <PostProduct /> },
       { path: "/dashboard/users", element: <AllUser /> },
     ],
   },

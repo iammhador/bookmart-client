@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import AllProducts from "./AllProducts";
+import AllProducts from "../Products/AllProducts";
 import BookModal from "../AddProduct/BookModal";
-const Products = () => {
+
+const AddProducts = () => {
   const [productBooking, setProductBooking] = useState(null);
   const { data: categories = [] } = useQuery({
     queryKey: ["categories"],
@@ -34,4 +35,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default AddProducts;

@@ -6,7 +6,7 @@ const CategoryShow = ({ cate }) => {
 
   return (
     <div className="shadow-xl pb-5 rounded-3xl">
-      <Link to={`/category/${categoryName}`} className="block">
+      <Link to={`/products/${categoryName}`} className="block">
         <img
           alt="Signage"
           src={categoryImage}

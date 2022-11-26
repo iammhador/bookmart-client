@@ -15,7 +15,7 @@ root.render(
   <QueryClientProvider client={queryClient}>
     <ContextApi>
       <App />
-      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster position="top-right" />
     </ContextApi>
   </QueryClientProvider>
   // </React.StrictMode>

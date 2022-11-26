@@ -1,9 +1,8 @@
 import React from "react";
 import { CiLocationOn, CiSignpostDuo1, CiClock1 } from "react-icons/ci";
 import { Link } from "react-router-dom";
-import PrimaryButton from "../../Components/PrimaryButton";
 
-const AllProducts = ({ cat }) => {
+const AllProducts = ({ cat, setProductBooking }) => {
   const {
     _id,
     SellerName,
@@ -82,11 +81,13 @@ const AllProducts = ({ cat }) => {
           </div>
         </div>
         <div className="text-center mx-auto">
-          <Link to={`/product/${ProductCategory}`}>
-            <button className="mt-5 w-full rounded bg-secondary px-6 py-2 text-sm font-medium text-white shadow hover:bg-base-100 hover:text-secondary focus:outline-none focus:ring active:bg-secondary sm:w-auto">
-              Book Now
-            </button>
-          </Link>
+          <label
+            onClick={() => setProductBooking(cat)}
+            htmlFor="book-modal"
+            className="btn mt-5 bg-secondary px-6 py-2 text-sm font-medium text-white shadow hover:bg-base-100 hover:text-secondary focus:outline-none focus:ring active:bg-secondary sm:w-auto"
+          >
+            Booking
+          </label>
         </div>
       </div>
     </div>

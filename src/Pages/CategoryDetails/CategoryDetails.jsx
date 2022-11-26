@@ -1,11 +1,7 @@
-import { async } from "@firebase/util";
-import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 
 const CategoryDetails = () => {
-  const { data } = useLoaderData();
-  console.log(data);
   // const {} = categoryDetails()
 
   // const { data: categoryDetails = [] } = useQuery({

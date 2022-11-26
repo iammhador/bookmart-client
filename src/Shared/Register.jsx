@@ -28,8 +28,11 @@ const Register = () => {
           email: userCredential?.user?.email,
           uid: userCredential?.user?.uid,
           role: "none",
+          Username: userCredential?.displayName?.email,
+          image: userCredential?.photoURL?.email,
         };
         setUserDetails(userInfo);
+        console.log(userCredential);
         toast.success("Successfully Logged");
       })
       .catch((error) => {

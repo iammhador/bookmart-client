@@ -22,7 +22,7 @@ Your website has to be related to selling used (second-hand products) with the a
 
 4. When the user clicks on a category on the home page, they will be redirected to the **/category/:id** route, where they will see **second-hand products under that category only**. The **/category/:id** page will have a column(s) of cards. It can be 1,2, or 3 columns. Each card will have a picture, name, location, resale price, original price, years of use, the time when it got posted, the seller's name; if the seller is verified, there will be a blue tick next to their name and a **Book now** button. Please note, category:/id will be a private route.
 
-5. On clicking the **Book now** button, if the user is not modal will have a form with the logged-in user name and email address, item name, and price(item name, price, and user information will not be editable) by default. You will give your phone number and meeting location, and lastly, there will be a submit button. After clicking the submit button, you will have to inform the buyer with a modal/toast that the item is booked.
+//* 5. On clicking the **Book now** button, if the user is not modal will have a form with the logged-in user name and email address, item name, and price(item name, price, and user information will not be editable) by default. You will give your phone number and meeting location, and lastly, there will be a submit button. After clicking the submit button, you will have to inform the buyer with a modal/toast that the item is booked.
 
 //* 6. Your navbar will have a **login** button. Implement email/password-based authentication and at least one social login(google, Facebook, GitHub, etc.) authentication. **Create an extra field for options. There will be two options: a radio button, a dropdown, a toggle button, etc. If the user creates a seller account, he will choose the seller option. Otherwise, a normal user will have the user option selected by default**. Users logged in by using social media will be considered as buyers.
 
@@ -36,7 +36,7 @@ Your website has to be related to selling used (second-hand products) with the a
 
    **Admin will see:** All Sellers, All Buyers (see requirement 12), Reported Items
 
-8. On the " **Add A Product**" route, create a form that will have fields for product name, price, condition type(excellent, good, fair), mobile number, location (Chittagong, Dhaka, etc.), description, price, Year of purchase and other relevant information. After submitting the form, a modal/toast with a message will pop up to inform the user. Please remember, they must be a seller to add a product (think about the verification process for the admin access). After adding the product, you will then be redirected to the My Products Page.
+//! 8. On the " **Add A Product**" route, create a form that will have fields for product name, price, condition type(excellent, good, fair), mobile number, location (Chittagong, Dhaka, etc.), description, price, Year of purchase and other relevant information. After submitting the form, a modal/toast with a message will pop up to inform the user. Please remember, they must be a seller to add a product (think about the verification process for the admin access). After adding the product, you will then be redirected to the My Products Page.
 
 9. On the **"My Products"** page, sellers can delete sales status (available or sold), price, and any other relevant information they want to show. Please note there will be a special button for each unsold/available product where the seller can hit the button to advertise.
 
@@ -58,22 +58,7 @@ Your website has to be related to selling used (second-hand products) with the a
 
 //* 14. Create a meaningful 404 page (not found page). Add a meaningful image on the 404 page.
 
-15. Use a database to store information. It could be MongoDB atlas or any other database. Save the users in the database
+//* 15. Use a database to store information. It could be MongoDB atlas or any other database. Save the users in the database
 
 
-picture, name, location, resale price, original price, years of use, the time when it got posted, the seller's name; if the seller is verified, there will be a blue tick next to their name and a **Book now** button
-   
-   
-// Name
-//Resale Price
-// Original Price
-//Days Of Use 
-//Post Time
-// Seller Name
-
-//Button
-
-//Location
-Picture
-
-Verified
+//^ Modal Close Check
