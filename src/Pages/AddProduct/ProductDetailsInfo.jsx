@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { AuthContext } from "../../Context/ContextApi";
 
-const ProductDetailsInfo = ({ user }) => {
-  console.log(user);
-  const { _id, email, username } = user;
-  console.log(user);
+const ProductDetailsInfo = () => {
+  const { user } = useContext(AuthContext);
+  // console.log(user.displayName);
+
   const handleProductInfo = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -88,7 +89,7 @@ const ProductDetailsInfo = ({ user }) => {
                         type="text"
                         id="sellerName"
                         name="sellerName"
-                        defaultValue={username}
+                        defaultValue={user?.displayName}
                         required
                         className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                       />
@@ -104,7 +105,7 @@ const ProductDetailsInfo = ({ user }) => {
                         type="email"
                         id="sellerEmail"
                         name="sellerEmail"
-                        defaultValue={email}
+                        defaultValue={user?.email}
                         disabled
                         required
                         className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"

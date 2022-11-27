@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import { useLoaderData, useLocation } from "react-router-dom";
+import Products from "../Products/products";
 
 const MatchCategory = () => {
   const data = useLoaderData();
-  console.log(data);
-  //   const { category, setCategory } = useState();
-  // let styleList = props.location.styleList;
-  // console.log(styleList);
-  //   const {} = data;
-  //   setCategory(data);
-  //   fetch(`${process.env.REACT_APP_API}/products`, {
-  //     method: "GET",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(category),
-  //   });
-  return <div>Hello</div>;
+
+  return (
+    <div className="my-20 w-5/6 mx-auto">
+      <div>
+        <h2 className="text-5xl font-extrabold text-secondary text-center mb-10 uppercase">
+          All Product
+        </h2>
+      </div>
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-5">
+        {data.map((cat) => (
+          <Products cat={cat} key={cat._id} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default MatchCategory;

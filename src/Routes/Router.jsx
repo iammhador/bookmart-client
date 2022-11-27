@@ -2,7 +2,7 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import Root from "../Layout/Root";
 import Blog from "../Pages/Blog/Blog";
 import AllUser from "../Pages/Dashboard/AllUser";
-import PostProduct from "../Pages/Dashboard/PostProduct";
+// import PostProduct from "../Pages/Dashboard/PostProduct";
 import Error from "../Pages/Error/Error";
 import Home from "../Pages/Home/Home";
 import Login from "../Shared/Login";
@@ -10,7 +10,7 @@ import Register from "../Shared/Register";
 import AddProduct from "../Pages/AddProduct/AddProduct";
 import Products from "../Pages/Products/products";
 import MatchCategory from "../Pages/Home/MatchCategory";
-import AddProducts from "../Pages/Dashboard/AddProducts";
+// import AddProducts from "../Pages/Dashboard/AddProducts";
 import MyOrder from "../Pages/Dashboard/MyOrder";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { path: "/dashboard/my-order", element: <MyOrder /> },
-      { path: "/dashboard/add-product", element: <PostProduct /> },
+      { path: "/dashboard/add-product", element: <AddProduct /> },
       { path: "/dashboard/users", element: <AllUser /> },
     ],
   },

@@ -1,8 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CategoryShow = ({ cate }) => {
   const { _id, categoryName, categoryImage, categoryId } = cate;
+
+  const url = `${process.env.REACT_APP_API}/products?categoryName=${categoryName}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => console.log(data));
 
   return (
     <div className="shadow-xl pb-5 rounded-3xl">
