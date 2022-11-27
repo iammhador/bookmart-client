@@ -19,8 +19,6 @@ const Navbar = () => {
   };
   const navigation = [
     { title: "Home", path: "/" },
-    { title: "Products", path: "/products" },
-    // { title: "Add Product", path: "/add-product" },
     { title: "Dashboard", path: "/dashboard" },
     { title: "Blog", path: "/blog" },
   ];

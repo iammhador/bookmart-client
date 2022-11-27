@@ -2,20 +2,18 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { AuthContext } from "../../Context/ContextApi";
 
-const MyOrder = () => {
+const AllSellers = () => {
   const { user } = useContext(AuthContext);
 
-  const { data: bookingData = [] } = useQuery({
+  const { data: sellerData = [] } = useQuery({
     queryKey: [""],
     queryFn: async () => {
-      const res = await fetch(
-        `${process.env.REACT_APP_API}/booking?email=${user?.email}`
-      );
+      const res = await fetch(`${process.env.REACT_APP_API}/users?role=Seller`);
       const data = await res.json();
       return data;
     },
   });
-  console.log(bookingData);
+  console.log(sellerData);
   return (
     <div>
       <>
@@ -30,57 +28,31 @@ const MyOrder = () => {
                         scope="col"
                         class="px-5 py-3  border-b border-gray-200 bg-secondary  text-white text-sm uppercase font-normal"
                       >
-                        Seller Name
-                      </th>
-                      <th
-                        scope="col"
-                        class="px-5 py-3 border-b border-gray-200 bg-secondary  text-white  text-left text-sm uppercase font-normal"
-                      >
-                        Seller Email
+                        Seller ID
                       </th>
 
                       <th
                         scope="col"
                         class="px-5 py-3  border-b border-gray-200 bg-secondary  text-white  text-left text-sm uppercase font-normal"
                       >
-                        Product Name
-                      </th>
-
-                      <th
-                        scope="col"
-                        class="px-5 py-3  border-b border-gray-200 bg-secondary  text-white text-left text-sm uppercase font-normal"
-                      >
-                        Product Price
+                        Seller Email
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     <>
-                      {bookingData.map((data) => (
+                      {sellerData.map((data) => (
                         <tr>
                           <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                             <p class="text-gray-900 whitespace-no-wrap">
                               {" "}
-                              {data.productSellerName}
+                              {data._id}
                             </p>
                           </td>
 
                           <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                             <p class="text-gray-900 whitespace-no-wrap">
-                              {" "}
-                              {data.productSellerEmail}
-                            </p>
-                          </td>
-
-                          <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p class="text-gray-900 whitespace-no-wrap">
-                              {data.ProductName}
-                            </p>
-                          </td>
-
-                          <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <p class="text-gray-900 whitespace-no-wrap">
-                              {data.ProductPrice}
+                              {data.email}
                             </p>
                           </td>
                         </tr>
@@ -97,4 +69,4 @@ const MyOrder = () => {
   );
 };
 
-export default MyOrder;
+export default AllSellers;

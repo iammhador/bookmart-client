@@ -27,7 +27,7 @@ const Register = () => {
         const userInfo = {
           email: userCredential?.user?.email,
           uid: userCredential?.user?.uid,
-          role: "none",
+          role: "User",
           Username: userCredential?.displayName?.email,
           image: userCredential?.photoURL?.email,
         };

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../Context/ContextApi";
+import React, { useEffect, useState } from "react";
+
 import Dashboard from "../Pages/Dashboard/Dashboard";
 
 const DashboardLayout = () => {

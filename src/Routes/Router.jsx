@@ -12,6 +12,11 @@ import Products from "../Pages/Products/products";
 import MatchCategory from "../Pages/Home/MatchCategory";
 // import AddProducts from "../Pages/Dashboard/AddProducts";
 import MyOrder from "../Pages/Dashboard/MyOrder";
+import MyProducts from "../Pages/Dashboard/MyProducts";
+import MyBuyers from "../Pages/Dashboard/MyBuyers";
+import BasicDashboard from "../Pages/Dashboard/BasicDashboard";
+import AllSellers from "../Pages/Dashboard/AllSellers";
+import AllBuyers from "../Pages/Dashboard/AllBuyers";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -65,9 +70,13 @@ const router = createBrowserRouter([
     element: <DashboardLayout />,
     errorElement: <Error />,
     children: [
+      { path: "/dashboard", element: <BasicDashboard /> },
       { path: "/dashboard/my-order", element: <MyOrder /> },
       { path: "/dashboard/add-product", element: <AddProduct /> },
-      { path: "/dashboard/users", element: <AllUser /> },
+      { path: "/dashboard/my-products", element: <MyProducts /> },
+      { path: "/dashboard/my-buyers", element: <MyBuyers /> },
+      { path: "/dashboard/sellers", element: <AllSellers /> },
+      { path: "/dashboard/buyers", element: <AllBuyers /> },
     ],
   },
 ]);

@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import ContextApi from "./Context/ContextApi";
-import Toaster from "react-hot-toast";
+// import Toaster from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
@@ -15,7 +15,7 @@ root.render(
   <QueryClientProvider client={queryClient}>
     <ContextApi>
       <App />
-      <Toaster position="top-right" />
+      {/* <Toaster position="top-right" /> */}
     </ContextApi>
   </QueryClientProvider>
   // </React.StrictMode>

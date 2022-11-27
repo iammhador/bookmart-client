@@ -3,31 +3,10 @@ import { Link, Outlet } from "react-router-dom";
 import Footer from "../../Shared/Footer";
 import Navbar from "../../Shared/Navbar";
 import ProfileImg from "../../Asset/user.png";
-import toast from "react-hot-toast";
 import { AuthContext } from "../../Context/ContextApi";
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
-  const [email, setEmail] = useState();
-  // setEmail(user?.email);
-  // useEffect(() => {
-  //   fetch(`${process.env.REACT_APP_API}/users?email=${user?.email}`, {
-  //     method: "GET",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setEmail(data);
-  //     });
-  // }, [user?.email]);
-  // console.log(email);
 
-  // const findRole = () => {
-  //   const userRole = email.find((userEmail) => userEmail === user?.email);
-  //   console.log(userRole);
-  // };
   return (
     <div>
       <Navbar />
@@ -58,20 +37,33 @@ const Dashboard = () => {
               </div>
             </Link>
 
+            {/* //# Seller Information  */}
             <Link to="/dashboard/add-product">
               <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
                 <h3 className="uppercase  font-bold ">Add Product</h3>
               </div>
             </Link>
 
-            <Link to="/dashboard/users">
+            <Link to="/dashboard/my-products">
               <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
-                <h3 className="uppercase  font-bold ">All Users</h3>
+                <h3 className="uppercase  font-bold ">My Products</h3>
               </div>
             </Link>
-            <Link to="/dashboard">
+            <Link to="/dashboard/my-buyers">
               <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
-                <h3 className="uppercase  font-bold ">All None</h3>
+                <h3 className="uppercase  font-bold ">My Buyers</h3>
+              </div>
+            </Link>
+
+            {/* //# Admin See All Users & All Buyers  */}
+            <Link to="/dashboard/sellers">
+              <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
+                <h3 className="uppercase  font-bold ">Sellers</h3>
+              </div>
+            </Link>
+            <Link to="/dashboard/buyers">
+              <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
+                <h3 className="uppercase  font-bold ">Buyers</h3>
               </div>
             </Link>
           </ul>

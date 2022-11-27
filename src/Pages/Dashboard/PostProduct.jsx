@@ -3,27 +3,6 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const PostProduct = () => {
-  // const { imgUrl, setImgUrl } = useState("");
-  // const [postProductDetails, setPostProductDetails] = useState("");
-
-  // console.log(PostProductDetails);
-
-  // fetch(`${process.env.REACT_APP_API}/products`, {
-  //   method: "POST",
-  //   headers: {
-  //     "content-type": "application/json",
-  //   },
-  //   body: JSON.stringify(PostProductDetails),
-  // })
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     console.log(data);
-  //   });
-
-  // useEffect(() => {}, {});
-
-  // console.log(postProductDetails);
-
   const handleProductInfo = (e) => {
     e.preventDefault();
     const form = e.target;

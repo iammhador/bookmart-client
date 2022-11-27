@@ -3,7 +3,7 @@ import React from "react";
 import CategoryShow from "./CategoryShow";
 
 const Category = () => {
-  const { data: categoryDetails = [] } = useQuery({
+  const { data: categoryDetails = [], refetch } = useQuery({
     queryKey: ["category"],
     queryFn: async () => {
       const res = await fetch(`${process.env.REACT_APP_API}/category`);
