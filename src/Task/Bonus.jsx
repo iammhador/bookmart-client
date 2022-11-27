@@ -22,4 +22,8 @@
 
 9. Most likely framework will do it for you. However do not forget to make your entire website responsive. (It is ok if the table is not responsive.) please note, all the pages including dashboard will be responsive.
 
-10. Database collection names, routes, mongdb features/operators when needed, api naming convension and best practices.
+10. Database collection names, routes, mongdb features / operators when needed, api naming convension and best practices.
+
+
+Server Site Commit: 6
+Client Site Commit : 9
