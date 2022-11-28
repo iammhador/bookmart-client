@@ -1,6 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext } from "react";
-
+import axios from "axios";
+import React, { useContext, useEffect } from "react";
+import toast from "react-hot-toast";
+import avater from "../../Asset/user.png";
 const AllBuyers = () => {
   const { data: buyersData = [] } = useQuery({
     queryKey: [""],
@@ -10,7 +12,21 @@ const AllBuyers = () => {
       return data;
     },
   });
-  console.log(buyersData);
+
+  const handleDelete = (id) => {
+    console.log(id);
+    fetch(`${process.env.REACT_APP_API}/users/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount) {
+          toast.success("User Is Deleted Successfully");
+        }
+      });
+  };
+
   return (
     <div>
       <>
@@ -25,6 +41,13 @@ const AllBuyers = () => {
                         scope="col"
                         class="px-5 py-3  border-b border-gray-200 bg-secondary  text-white text-sm uppercase font-normal"
                       >
+                        Profile Image
+                      </th>
+
+                      <th
+                        scope="col"
+                        class="px-5 py-3 border-b border-gray-200 bg-secondary  text-white  text-left text-sm uppercase font-normal"
+                      >
                         Seller ID
                       </th>
 
@@ -32,7 +55,21 @@ const AllBuyers = () => {
                         scope="col"
                         class="px-5 py-3  border-b border-gray-200 bg-secondary  text-white  text-left text-sm uppercase font-normal"
                       >
-                        Seller Email
+                        Seller Username
+                      </th>
+
+                      <th
+                        scope="col"
+                        class="px-5 py-3  border-b border-gray-200 bg-secondary  text-white text-left text-sm uppercase font-normal"
+                      >
+                        Product Email
+                      </th>
+
+                      <th
+                        scope="col"
+                        class="px-5 py-3  border-b border-gray-200 bg-secondary  text-white text-left text-sm uppercase font-normal"
+                      >
+                        Action
                       </th>
                     </tr>
                   </thead>
@@ -40,6 +77,13 @@ const AllBuyers = () => {
                     <>
                       {buyersData.map((data) => (
                         <tr>
+                          <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <img
+                              src={data.image ? data.image : avater}
+                              alt="Profile"
+                              className="w-28 h-20"
+                            />
+                          </td>
                           <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                             <p class="text-gray-900 whitespace-no-wrap">
                               {" "}
@@ -49,8 +93,24 @@ const AllBuyers = () => {
 
                           <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                             <p class="text-gray-900 whitespace-no-wrap">
+                              {" "}
+                              {data.username ? data.username : "No data found"}
+                            </p>
+                          </td>
+
+                          <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <p class="text-gray-900 whitespace-no-wrap">
                               {data.email}
                             </p>
+                          </td>
+
+                          <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <button
+                              onClick={() => handleDelete(data._id)}
+                              class=" whitespace-no-wrap bg-secondary text-center text-white py-2 px-3 rounded-lg  hover:bg-primary"
+                            >
+                              Delete
+                            </button>
                           </td>
                         </tr>
                       ))}

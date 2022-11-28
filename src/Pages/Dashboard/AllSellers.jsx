@@ -1,11 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext } from "react";
-import { AuthContext } from "../../Context/ContextApi";
+import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const AllSellers = () => {
-  const { user } = useContext(AuthContext);
-
-  const { data: sellerData = [] } = useQuery({
+  const [sellerId, setSellerId] = useState("");
+  const { data: userData = [] } = useQuery({
     queryKey: [""],
     queryFn: async () => {
       const res = await fetch(`${process.env.REACT_APP_API}/users?role=Seller`);
@@ -13,7 +12,36 @@ const AllSellers = () => {
       return data;
     },
   });
-  console.log(sellerData);
+
+  const handleDelete = (id) => {
+    console.log(id);
+    fetch(`${process.env.REACT_APP_API}/users/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount) {
+          toast.success("User Is Deleted Successfully");
+        }
+      });
+  };
+
+  // const { data: userIdDelete = [], refetch } = useQuery({
+  //   queryKey: [""],
+  //   queryFn: async () => {
+  //     const res = await fetch(
+  //       `${process.env.REACT_APP_API}/users/${sellerId}`,
+  //       {
+  //         method: "DELETE",
+  //       }
+  //     );
+  //     const data = await res.json();
+  //     return data;
+  //   },
+  // });
+  // refetch();
+  // console.log(userIdDelete);
   return (
     <div>
       <>
@@ -28,6 +56,13 @@ const AllSellers = () => {
                         scope="col"
                         class="px-5 py-3  border-b border-gray-200 bg-secondary  text-white text-sm uppercase font-normal"
                       >
+                        Profile Image
+                      </th>
+
+                      <th
+                        scope="col"
+                        class="px-5 py-3 border-b border-gray-200 bg-secondary  text-white  text-left text-sm uppercase font-normal"
+                      >
                         Seller ID
                       </th>
 
@@ -35,14 +70,35 @@ const AllSellers = () => {
                         scope="col"
                         class="px-5 py-3  border-b border-gray-200 bg-secondary  text-white  text-left text-sm uppercase font-normal"
                       >
-                        Seller Email
+                        Seller Username
+                      </th>
+
+                      <th
+                        scope="col"
+                        class="px-5 py-3  border-b border-gray-200 bg-secondary  text-white text-left text-sm uppercase font-normal"
+                      >
+                        Product Email
+                      </th>
+
+                      <th
+                        scope="col"
+                        class="px-5 py-3  border-b border-gray-200 bg-secondary  text-white text-left text-sm uppercase font-normal"
+                      >
+                        Action
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     <>
-                      {sellerData.map((data) => (
+                      {userData.map((data) => (
                         <tr>
+                          <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <img
+                              src={data.image}
+                              alt="Profile"
+                              className="w-28 h-20"
+                            />
+                          </td>
                           <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                             <p class="text-gray-900 whitespace-no-wrap">
                               {" "}
@@ -52,8 +108,24 @@ const AllSellers = () => {
 
                           <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                             <p class="text-gray-900 whitespace-no-wrap">
+                              {" "}
+                              {data.username ? data.username : "No data found"}
+                            </p>
+                          </td>
+
+                          <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <p class="text-gray-900 whitespace-no-wrap">
                               {data.email}
                             </p>
+                          </td>
+
+                          <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <button
+                              onClick={() => handleDelete(data._id)}
+                              class=" whitespace-no-wrap bg-secondary text-center text-white py-2 px-3 rounded-lg  hover:bg-primary"
+                            >
+                              Delete
+                            </button>
                           </td>
                         </tr>
                       ))}
