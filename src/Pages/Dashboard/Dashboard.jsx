@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import Footer from "../../Shared/Footer";
 import Navbar from "../../Shared/Navbar";
 import ProfileImg from "../../Asset/user.png";
@@ -8,13 +8,14 @@ import { getUserInfo } from "../../Api/Api";
 import { useQuery } from "@tanstack/react-query";
 import { async } from "@firebase/util";
 import axios from "axios";
-import { useAdmin, useSeller } from "../../Hooks/useRole";
+import { useAdmin, useSeller, useUser } from "../../Hooks/useRole";
 
 const Dashboard = () => {
   // const [loading, setLoading] = useState(true);
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
   const [isSeller] = useSeller(user?.email);
+  const [isUser] = useUser(user?.email);
 
   // const [userInfo, setUserInfo] = useState();
 
@@ -120,45 +121,45 @@ const Dashboard = () => {
             {/* //# User Information */}
             {/* {userInfo.map((userInfos) => console.log(userInfos))} */}
 
-            {/* {userInfo.role === "User" && (
+            {isUser && (
               <Link to="/dashboard/my-order">
-                <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
+                <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg bg-secondary text-white hover:bg-primary">
                   <h3 className="uppercase  font-bold ">My Order</h3>
                 </div>
               </Link>
-            )} */}
+            )}
             {/* //# Seller Information  */}
-            {/* {userInfo.role === "Seller" && (
+            {isSeller && (
               <>
                 <Link to="/dashboard/add-product">
-                  <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
+                  <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg bg-secondary text-white hover:bg-primary">
                     <h3 className="uppercase  font-bold ">Add Product</h3>
                   </div>
                 </Link>
 
                 <Link to="/dashboard/my-products">
-                  <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
+                  <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg bg-secondary text-white hover:bg-primary">
                     <h3 className="uppercase  font-bold ">My Products</h3>
                   </div>
                 </Link>
                 <Link to="/dashboard/my-buyers">
-                  <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
+                  <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg bg-secondary text-white hover:bg-primary">
                     <h3 className="uppercase  font-bold ">My Buyers</h3>
                   </div>
                 </Link>
               </>
-            )} */}
+            )}
 
             {/* //# Admin See All Users & All Buyers  */}
             {isAdmin && (
               <>
                 <Link to="/dashboard/sellers">
-                  <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
+                  <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg bg-secondary text-white hover:bg-primary">
                     <h3 className="uppercase  font-bold ">Sellers</h3>
                   </div>
                 </Link>
                 <Link to="/dashboard/buyers">
-                  <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
+                  <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg bg-secondary text-white hover:bg-primary">
                     <h3 className="uppercase  font-bold ">Buyers</h3>
                   </div>
                 </Link>

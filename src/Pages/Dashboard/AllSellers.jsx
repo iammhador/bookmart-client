@@ -124,11 +124,16 @@ const AllSellers = () => {
                           </td>
 
                           <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <button
-                              onClick={() => handleVerified(data._id)}
-                              class=" whitespace-no-wrap bg-secondary text-center text-white py-2 px-3 rounded-lg  hover:bg-primary"
-                            >
-                              Verified
+                            <button onClick={() => handleVerified(data._id)}>
+                              {data.sellerVerification ? (
+                                <p class=" whitespace-no-wrap bg-cyan-500 text-center text-white py-2 px-3 rounded-lg  hover:bg-primary">
+                                  Verified
+                                </p>
+                              ) : (
+                                <p class=" whitespace-no-wrap bg-green-500 text-center text-white py-2 px-3 rounded-lg  hover:bg-primary">
+                                  Verify
+                                </p>
+                              )}
                             </button>
                           </td>
 

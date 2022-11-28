@@ -60,8 +60,12 @@ const ProductDetailsInfo = () => {
             .then((res) => res.json())
             .then((data) => {
               console.log(data);
-              toast.success("Product Added Successfully.");
-              form.reset();
+
+              if (data.acknowledged) {
+                toast.success("Product Added Successfully");
+
+                form.reset();
+              }
             });
         }
       });
@@ -199,7 +203,7 @@ const ProductDetailsInfo = () => {
                       >
                         <option>Fictional</option>
                         <option>Non-Fictional</option>
-                        <option>Education</option>
+                        <option>Educational</option>
                       </select>
                     </div>
 

@@ -91,13 +91,6 @@ const MyProducts = () => {
                           scope="col"
                           class="px-5 py-3  border-b border-gray-200 bg-secondary  text-white text-left text-sm uppercase font-normal"
                         >
-                          Product Post
-                        </th>
-
-                        <th
-                          scope="col"
-                          class="px-5 py-3  border-b border-gray-200 bg-secondary  text-white text-left text-sm uppercase font-normal"
-                        >
                           Action
                         </th>
                       </tr>
@@ -134,17 +127,18 @@ const MyProducts = () => {
                               </td>
 
                               <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                <button class=" whitespace-no-wrap bg-secondary text-center text-white py-2 px-3 rounded-lg  hover:bg-primary">
-                                  Available
-                                </button>
-                              </td>
-
-                              <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <button
                                   onClick={() => handlePublished(myProd._id)}
-                                  class=" whitespace-no-wrap bg-secondary text-center text-white py-2 px-3 rounded-lg  hover:bg-primary"
                                 >
-                                  Published
+                                  {myProd.productPost ? (
+                                    <p class=" whitespace-no-wrap bg-cyan-500 text-center text-white py-2 px-3 rounded-lg  hover:bg-primary">
+                                      Published
+                                    </p>
+                                  ) : (
+                                    <p class=" whitespace-no-wrap bg-cyan-500 text-center text-white py-2 px-3 rounded-lg  hover:bg-primary">
+                                      Available
+                                    </p>
+                                  )}
                                 </button>
                               </td>
 
