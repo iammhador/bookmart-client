@@ -7,12 +7,27 @@ import { AuthContext } from "../../Context/ContextApi";
 import { getUserInfo } from "../../Api/Api";
 import { useQuery } from "@tanstack/react-query";
 import { async } from "@firebase/util";
+import axios from "axios";
 
 const Dashboard = () => {
+  const [loading, setLoading] = useState(false);
   const { user } = useContext(AuthContext);
+  const [userDetailsInfo, setUserDetailsInfo] = useState();
   // const [userInfo, setUserInfo] = useState([]);
-  // const [loading, setLoading] = useState(true);
+  // console.log(userInfo);
+  const [count, setCount] = useState(0);
+  // const { data: userInfo = [] } = useQuery({
+  //   queryKey: ["user?.email"],
+  //   queryFn: async () => {
+  //     const res = await fetch(
+  //       `${process.env.REACT_APP_API}/users?email=${user?.email}`
+  //     );
+  //     const data = await res.json();
+  //     return data;
+  //   },
+  // });
 
+  // console.log(userInfo);
   // setLoading(true);
 
   // const { data: userInfo } = useQuery({
@@ -26,18 +41,47 @@ const Dashboard = () => {
   //   },
   // });
   // console.log(userInfo[0].role);
+  // setLoading(true);
   // useEffect(() => {
   //   fetch(`${process.env.REACT_APP_API}/users?email=${user?.email}`)
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setUserInfo(data);
-  //       loading(false);
+  //       setLoading(false);
+  //     })
+  //     .catch((err) => console.error(err));
+  // }, []);
+
+  // useEffect(() => {
+  //   setLoading(!loading);
+  //   fetch(`${process.env.REACT_APP_API}/users?email=${user?.email}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setUserDetailsInfo(data);
+  //       setLoading(!loading);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, [user?.email]);
+  // useEffect(() => {
+  //   setLoading(!loading);
+  //   setCount((count) => count + 1);
+  //   fetch(`${process.env.REACT_APP_API}/users?email=${user?.email}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       // setUserDetailsInfo(data);
+  //       // setLoading(false);
+  //       console.log(data);
   //     });
   // }, []);
-  // console.log(userInfo[0].role);
+  // setLoading(!loading);
+
+  // console.log(userDetailsInfo);
 
   return (
     <div>
+      {/* {userDetailsInfo.map((userInfos) => setUserInfo(userInfos))} */}
       <Navbar />
       <div className="drawer drawer-mobile">
         <input id="bookmart-drawer" type="checkbox" className="drawer-toggle" />
@@ -62,7 +106,7 @@ const Dashboard = () => {
             </div>
             {/* //# User Information */}
 
-            {/* {userInfo[0].role === "User" && (
+            {/* {userInfo.role === "User" && (
               <Link to="/dashboard/my-order">
                 <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
                   <h3 className="uppercase  font-bold ">My Order</h3>

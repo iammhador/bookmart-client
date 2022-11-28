@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const AllSellers = () => {
-  const [sellerId, setSellerId] = useState("");
+  const [refetch, setRefetch] = useState(false);
   const { data: userData = [] } = useQuery({
     queryKey: [""],
     queryFn: async () => {
@@ -13,35 +14,28 @@ const AllSellers = () => {
     },
   });
 
+  // console.log(sellerId);
+  const handleVerified = (id) => {
+    fetch(`${process.env.REACT_APP_API}/users/${id}`, {
+      method: "PUT",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast.success("Seller Verified");
+      });
+  };
+
   const handleDelete = (id) => {
-    console.log(id);
     fetch(`${process.env.REACT_APP_API}/users/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.deletedCount) {
-          toast.success("User Is Deleted Successfully");
-        }
       });
   };
 
-  // const { data: userIdDelete = [], refetch } = useQuery({
-  //   queryKey: [""],
-  //   queryFn: async () => {
-  //     const res = await fetch(
-  //       `${process.env.REACT_APP_API}/users/${sellerId}`,
-  //       {
-  //         method: "DELETE",
-  //       }
-  //     );
-  //     const data = await res.json();
-  //     return data;
-  //   },
-  // });
-  // refetch();
-  // console.log(userIdDelete);
   return (
     <div>
       <>
@@ -84,6 +78,13 @@ const AllSellers = () => {
                         scope="col"
                         class="px-5 py-3  border-b border-gray-200 bg-secondary  text-white text-left text-sm uppercase font-normal"
                       >
+                        Seller Verification
+                      </th>
+
+                      <th
+                        scope="col"
+                        class="px-5 py-3  border-b border-gray-200 bg-secondary  text-white text-left text-sm uppercase font-normal"
+                      >
                         Action
                       </th>
                     </tr>
@@ -117,6 +118,15 @@ const AllSellers = () => {
                             <p class="text-gray-900 whitespace-no-wrap">
                               {data.email}
                             </p>
+                          </td>
+
+                          <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <button
+                              onClick={() => handleVerified(data._id)}
+                              class=" whitespace-no-wrap bg-secondary text-center text-white py-2 px-3 rounded-lg  hover:bg-primary"
+                            >
+                              Verified
+                            </button>
                           </td>
 
                           <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">

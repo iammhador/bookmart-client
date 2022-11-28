@@ -1,8 +1,12 @@
 import React from "react";
 import { CiLocationOn, CiSignpostDuo1, CiClock1 } from "react-icons/ci";
-import { Link } from "react-router-dom";
-// import verification from "../../Asset/check.png";
-const AllProducts = ({ cat, setProductBooking }) => {
+
+const Advertised = ({ publishProduct, setProductBooking }) => {
+  // fetch(`${process.env.REACT_APP_API}/users`)
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     console.log(data);
+  //   });
   const {
     _id,
     SellerName,
@@ -18,14 +22,10 @@ const AllProducts = ({ cat, setProductBooking }) => {
     ProductDescription,
     DaysOfUse,
     image,
-    productPost,
-  } = cat;
-
-  // console.log(cat);
-
+  } = publishProduct;
   return (
     <div>
-      {productPost ? (
+      {publishProduct?.productPost ? (
         <>
           <div className="shadow-xl rounded-xl ">
             <div className=" text-center p-4 ">
@@ -88,7 +88,7 @@ const AllProducts = ({ cat, setProductBooking }) => {
               </div>
               <div className="text-center mx-auto">
                 <label
-                  onClick={() => setProductBooking(cat)}
+                  onClick={() => setProductBooking(publishProduct)}
                   htmlFor="book-modal"
                   className="btn mt-5 bg-secondary px-6 py-2 text-sm font-medium text-white shadow hover:bg-base-100 hover:text-secondary focus:outline-none focus:ring active:bg-secondary sm:w-auto"
                 >
@@ -99,15 +99,10 @@ const AllProducts = ({ cat, setProductBooking }) => {
           </div>
         </>
       ) : (
-        <>
-          {" "}
-          <p className="text-center text-primary font-semibold">
-            No Post Advertised Yet
-          </p>
-        </>
+        "No Data Found"
       )}
     </div>
   );
 };
 
-export default AllProducts;
+export default Advertised;
