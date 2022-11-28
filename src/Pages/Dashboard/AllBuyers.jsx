@@ -4,7 +4,7 @@ import React, { useContext, useEffect } from "react";
 import toast from "react-hot-toast";
 import avater from "../../Asset/user.png";
 const AllBuyers = () => {
-  const { data: buyersData = [] } = useQuery({
+  const { data: buyersData = [], refetch } = useQuery({
     queryKey: [""],
     queryFn: async () => {
       const res = await fetch(`${process.env.REACT_APP_API}/users?role=User`);
@@ -23,6 +23,7 @@ const AllBuyers = () => {
         console.log(data);
         if (data.deletedCount) {
           toast.success("User Is Deleted Successfully");
+          refetch();
         }
       });
   };

@@ -8,7 +8,7 @@ import NoData from "../../Asset/No data-rafiki.svg";
 const MyProducts = () => {
   const { user } = useContext(AuthContext);
   console.log(user?.email);
-  const { data: myProducts = [] } = useQuery({
+  const { data: myProducts = [], refetch } = useQuery({
     queryKey: ["myProduct"],
     queryFn: async () => {
       const res = await fetch(
@@ -26,9 +26,6 @@ const MyProducts = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.deletedCount) {
-          toast.success("User Is Deleted Successfully");
-        }
       });
   };
 
@@ -41,6 +38,7 @@ const MyProducts = () => {
         console.log(data);
         if (data.deletedCount) {
           toast.success("User Is Deleted Successfully");
+          refetch();
         }
       });
   };

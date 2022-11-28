@@ -4,8 +4,7 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const AllSellers = () => {
-  const [refetch, setRefetch] = useState(false);
-  const { data: userData = [] } = useQuery({
+  const { data: userData = [], refetch } = useQuery({
     queryKey: [""],
     queryFn: async () => {
       const res = await fetch(`${process.env.REACT_APP_API}/users?role=Seller`);
@@ -33,6 +32,10 @@ const AllSellers = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        if (data.deletedCount) {
+          toast.success("User Is Deleted Successfully");
+          refetch();
+        }
       });
   };
 

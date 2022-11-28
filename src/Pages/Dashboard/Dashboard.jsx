@@ -8,11 +8,16 @@ import { getUserInfo } from "../../Api/Api";
 import { useQuery } from "@tanstack/react-query";
 import { async } from "@firebase/util";
 import axios from "axios";
+import { useAdmin, useSeller } from "../../Hooks/useRole";
 
 const Dashboard = () => {
   // const [loading, setLoading] = useState(true);
   const { user } = useContext(AuthContext);
-  const [userInfo, setUserInfo] = useState();
+  const [isAdmin] = useAdmin(user?.email);
+  const [isSeller] = useSeller(user?.email);
+
+  // const [userInfo, setUserInfo] = useState();
+
   // if (loading) {
   //   return "Loading...";
   // }
@@ -51,17 +56,17 @@ const Dashboard = () => {
   // });
   // console.log(userInfo[0].role);
   // setLoading(true);
-  useEffect(() => {
-    fetch(`${process.env.REACT_APP_API}/users?email=${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setUserInfo(data[0]);
-        // setLoading(false);
-        // console.log(data[0]);
-      })
-      .catch((err) => console.error(err));
-  }, []);
-  console.log(userInfo?.role);
+  // useEffect(() => {
+  //   fetch(`${process.env.REACT_APP_API}/users?email=${user?.email}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setUserInfo(data[0]);
+  //       // setLoading(false);
+  //       // console.log(data[0]);
+  //     })
+  //     .catch((err) => console.error(err));
+  // }, []);
+  // console.log(userInfo?.role);
 
   // useEffect(() => {
   //   setLoading(!loading);
@@ -145,7 +150,7 @@ const Dashboard = () => {
             )} */}
 
             {/* //# Admin See All Users & All Buyers  */}
-            {/* {userInfo[0].role === "admin" && (
+            {isAdmin && (
               <>
                 <Link to="/dashboard/sellers">
                   <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
@@ -158,10 +163,10 @@ const Dashboard = () => {
                   </div>
                 </Link>
               </>
-            )} */}
+            )}
 
             {/* //# User Information */}
-
+            {/* 
             <Link to="/dashboard/my-order">
               <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
                 <h3 className="uppercase  font-bold ">My Order</h3>
@@ -183,10 +188,10 @@ const Dashboard = () => {
               <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
                 <h3 className="uppercase  font-bold ">My Buyers</h3>
               </div>
-            </Link>
+            </Link> */}
 
             {/* //# Admin See All Users & All Buyers  */}
-
+            {/* 
             <Link to="/dashboard/sellers">
               <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
                 <h3 className="uppercase  font-bold ">Sellers</h3>
@@ -196,7 +201,7 @@ const Dashboard = () => {
               <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
                 <h3 className="uppercase  font-bold ">Buyers</h3>
               </div>
-            </Link>
+            </Link> */}
           </ul>
         </div>
       </div>
