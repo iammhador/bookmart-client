@@ -10,14 +10,9 @@ import { async } from "@firebase/util";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
-  // const { email } = user;
-  // console.log(user?.email);
   // const [userInfo, setUserInfo] = useState([]);
-  // const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(true);
 
-  // if (loading) {
-  //   return "Loading..";
-  // }
   // setLoading(true);
 
   // const { data: userInfo } = useQuery({
@@ -32,14 +27,13 @@ const Dashboard = () => {
   // });
   // console.log(userInfo[0].role);
   // useEffect(() => {
-  //   setLoading(!loading);
-  //   fetch(`${process.env.REACT_APP_API}/users?email=${email}`)
+  //   fetch(`${process.env.REACT_APP_API}/users?email=${user?.email}`)
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setUserInfo(data);
+  //       loading(false);
   //     });
   // }, []);
-  // setLoading(!loading);
   // console.log(userInfo[0].role);
 
   return (
@@ -67,6 +61,7 @@ const Dashboard = () => {
               </p>
             </div>
             {/* //# User Information */}
+
             {/* {userInfo[0].role === "User" && (
               <Link to="/dashboard/my-order">
                 <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
@@ -95,6 +90,7 @@ const Dashboard = () => {
                 </Link>
               </>
             )} */}
+
             {/* //# Admin See All Users & All Buyers  */}
             {/* {userInfo[0].role === "admin" && (
               <>
@@ -110,17 +106,21 @@ const Dashboard = () => {
                 </Link>
               </>
             )} */}
+
             {/* //# User Information */}
+
             <Link to="/dashboard/my-order">
               <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
                 <h3 className="uppercase  font-bold ">My Order</h3>
               </div>
             </Link>
+
             <Link to="/dashboard/add-product">
               <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
                 <h3 className="uppercase  font-bold ">Add Product</h3>
               </div>
-            </Link>{" "}
+            </Link>
+
             <Link to="/dashboard/my-products">
               <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
                 <h3 className="uppercase  font-bold ">My Products</h3>
@@ -131,7 +131,9 @@ const Dashboard = () => {
                 <h3 className="uppercase  font-bold ">My Buyers</h3>
               </div>
             </Link>
-            {/* //# Admin See All Users & All Buyers   */}
+
+            {/* //# Admin See All Users & All Buyers  */}
+
             <Link to="/dashboard/sellers">
               <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">
                 <h3 className="uppercase  font-bold ">Sellers</h3>

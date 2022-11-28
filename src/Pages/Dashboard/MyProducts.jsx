@@ -1,6 +1,7 @@
 import { async } from "@firebase/util";
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../Context/ContextApi";
 import MyProductsInfo from "./MyProductsInfo";
 
@@ -17,8 +18,32 @@ const MyProducts = () => {
       return data;
     },
   });
-  console.log(`${process.env.REACT_APP_API}/products?email=${user?.email}`);
-  console.log(myProducts);
+
+  const handlePublished = (id) => {
+    fetch(`${process.env.REACT_APP_API}/products/${id}`, {
+      method: "PUT",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount) {
+          toast.success("User Is Deleted Successfully");
+        }
+      });
+  };
+
+  const handleDelete = (id) => {
+    fetch(`${process.env.REACT_APP_API}/products/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount) {
+          toast.success("User Is Deleted Successfully");
+        }
+      });
+  };
   return (
     <div>
       <div class="container mx-auto px-4 sm:px-8 max-w-3xl">
@@ -54,6 +79,27 @@ const MyProducts = () => {
                     >
                       Product Price
                     </th>
+
+                    <th
+                      scope="col"
+                      class="px-5 py-3  border-b border-gray-200 bg-secondary  text-white text-left text-sm uppercase font-normal"
+                    >
+                      Product Information
+                    </th>
+
+                    <th
+                      scope="col"
+                      class="px-5 py-3  border-b border-gray-200 bg-secondary  text-white text-left text-sm uppercase font-normal"
+                    >
+                      Product Post
+                    </th>
+
+                    <th
+                      scope="col"
+                      class="px-5 py-3  border-b border-gray-200 bg-secondary  text-white text-left text-sm uppercase font-normal"
+                    >
+                      Action
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -79,6 +125,36 @@ const MyProducts = () => {
                             <p class="text-gray-900 whitespace-no-wrap">
                               {myProd.ProductCategory}
                             </p>
+                          </td>
+
+                          <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <p class="text-gray-900 whitespace-no-wrap">
+                              {myProd.ResalePrice}
+                            </p>
+                          </td>
+
+                          <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <button class=" whitespace-no-wrap bg-secondary text-center text-white py-2 px-3 rounded-lg  hover:bg-primary">
+                              Available
+                            </button>
+                          </td>
+
+                          <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <button
+                              onClick={() => handlePublished(myProd._id)}
+                              class=" whitespace-no-wrap bg-secondary text-center text-white py-2 px-3 rounded-lg  hover:bg-primary"
+                            >
+                              Published
+                            </button>
+                          </td>
+
+                          <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                            <button
+                              onClick={() => handleDelete(myProd._id)}
+                              class=" whitespace-no-wrap bg-secondary text-center text-white py-2 px-3 rounded-lg  hover:bg-primary"
+                            >
+                              Delete
+                            </button>
                           </td>
                         </tr>
                       </>

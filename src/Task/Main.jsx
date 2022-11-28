@@ -38,13 +38,15 @@ Your website has to be related to selling used (second-hand products) with the a
 
 //! 8. On the " **Add A Product**" route, create a form that will have fields for product name, price, condition type(excellent, good, fair), mobile number, location (Chittagong, Dhaka, etc.), description, price, Year of purchase and other relevant information. After submitting the form, a modal/toast with a message will pop up to inform the user. Please remember, they must be a seller to add a product (think about the verification process for the admin access). After adding the product, you will then be redirected to the My Products Page.
 
-9. On the **"My Products"** page, sellers can delete sales status (available or sold), price, and any other relevant information they want to show. Please note there will be a special button for each unsold/available product where the seller can hit the button to advertise.
+9.On the "My Products" page, display sales status (available or sold), price, and any other relevant information you want to show. A seller will be able to delete any of his/her product. Please note there will be a special button for each unsold/available product where the seller can hit the button to advertise.
+
+
 
 10. The advertised items will appear on the home page. Please note if there are no items marked as advertised, the advertised items section won't be displayed on the home page. The advertised section will only appear if there is one or more available (unsold items) are marked to be advertised.
 
 //* 11. " **My buyers" are optional.** See the optional section for details. On this page, a seller will see the buyer's phone, name, email address, and location.
 
-12. In the **All Sellers,** the Admin will see the sellers. On the **All Buyers** route, the Admin can see all the Buyers. If the Admin wants, he can delete any buyers or sellers.
+//*12. In the **All Sellers,** the Admin will see the sellers. On the **All Buyers** route, the Admin can see all the Buyers. If the Admin wants, he can delete any buyers or sellers.
 
 //* 13. On the navbar, there will be a Blogs route. This will be an open route (anyone visiting your website will see it). You will have to answer all the questions, and they are
 
@@ -64,3 +66,4 @@ Your website has to be related to selling used (second-hand products) with the a
 //^ Modal Close Check
 //^ Refetch, Reload
 //^ Dashboard User Role Update
+//^ Toast
