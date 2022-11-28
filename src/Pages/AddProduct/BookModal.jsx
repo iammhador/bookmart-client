@@ -56,6 +56,7 @@ const BookModal = ({ productBooking }) => {
       .then((data) => {
         console.log(data);
         toast.success("Successfully Booked The Items");
+        form.reset();
       });
   };
   return (
