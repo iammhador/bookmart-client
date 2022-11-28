@@ -33,7 +33,7 @@ const Register = () => {
         };
         setUserDetails(userInfo);
         console.log(userCredential);
-        toast.success("Successfully Logged");
+        toast.success("Successfully Register");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -63,7 +63,7 @@ const Register = () => {
         if (data.success) {
           register(email, password)
             .then((userCredential) => {
-              toast.success("Successfully Logged");
+              toast.success("Successfully Register");
               form.reset("");
               const userInfo = {
                 email: userCredential?.user?.email,

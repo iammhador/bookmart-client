@@ -20,19 +20,19 @@ const ContextApi = ({ children }) => {
   const [loading, setLoading] = useState(true);
   //# Google Login :
   const googleLogin = () => {
-    setLoading(false);
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
   //# Register :
   const register = (email, password) => {
-    setLoading(false);
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   //# Login :
   const login = (email, password) => {
-    setLoading(false);
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -46,14 +46,14 @@ const ContextApi = ({ children }) => {
 
   //# Logout :
   const logout = () => {
-    setLoading(false);
+    setLoading(true);
     return signOut(auth);
   };
 
   //# On Auth Change :
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (currentUser) => {
-      setLoading(true);
+      setLoading(false);
       setUser(currentUser);
     });
     return () => unSub();

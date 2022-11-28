@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import ContextApi from "./Context/ContextApi";
 import Toaster from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ToastContainer } from "react-toastify";
 const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -15,9 +16,10 @@ root.render(
     <ContextApi>
       <App />
       <Toaster position="top-right" reverseOrder={false} />
+      <ToastContainer />
     </ContextApi>
   </QueryClientProvider>
-  // </React.StrictMode>
+  // </React.StrictMode> */}
 );
 
 // If you want to start measuring performance in your app, pass a function

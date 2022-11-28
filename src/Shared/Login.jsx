@@ -1,16 +1,22 @@
 import React, { useContext } from "react";
 import { BsGoogle } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "../Context/ContextApi";
 
 const Login = () => {
   const { googleLogin, login } = useContext(AuthContext);
 
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location?.state?.from?.pathname || "/";
+
   //# Google Login :
   const handleGoogleLogin = () => {
     googleLogin()
-      .then((userCredential) => {
-        console.log(userCredential);
+      .then((result) => {
+        navigate(from, { replace: true });
+        toast.success("Successfully Logged");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -27,7 +33,8 @@ const Login = () => {
     const password = form.password.value;
     login(email, password)
       .then((userCredential) => {
-        console.log(userCredential);
+        navigate(from, { replace: true });
+        toast.success("Successfully Logged");
       })
       .catch((error) => {
         const errorCode = error.code;

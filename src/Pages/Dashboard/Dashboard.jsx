@@ -10,12 +10,19 @@ import { async } from "@firebase/util";
 import axios from "axios";
 
 const Dashboard = () => {
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(true);
   const { user } = useContext(AuthContext);
-  const [userDetailsInfo, setUserDetailsInfo] = useState();
-  // const [userInfo, setUserInfo] = useState([]);
-  // console.log(userInfo);
-  const [count, setCount] = useState(0);
+  const [userInfo, setUserInfo] = useState();
+  // if (loading) {
+  //   return "Loading...";
+  // }
+  // const [loading, setLoading] = useState(false);
+  // const [userDetailsInfo, setUserDetailsInfo] = useState([]);
+  // if (loading) {
+  //   return "Loading...";
+  // }
+  // const [count, setCount] = useState(0);
+  // setLoading(false);
   // const { data: userInfo = [] } = useQuery({
   //   queryKey: ["user?.email"],
   //   queryFn: async () => {
@@ -26,6 +33,8 @@ const Dashboard = () => {
   //     return data;
   //   },
   // });
+  // console.log(userInfo);
+  // setLoading(false);
 
   // console.log(userInfo);
   // setLoading(true);
@@ -42,15 +51,17 @@ const Dashboard = () => {
   // });
   // console.log(userInfo[0].role);
   // setLoading(true);
-  // useEffect(() => {
-  //   fetch(`${process.env.REACT_APP_API}/users?email=${user?.email}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setUserInfo(data);
-  //       setLoading(false);
-  //     })
-  //     .catch((err) => console.error(err));
-  // }, []);
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API}/users?email=${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setUserInfo(data[0]);
+        // setLoading(false);
+        // console.log(data[0]);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+  console.log(userInfo?.role);
 
   // useEffect(() => {
   //   setLoading(!loading);
@@ -64,24 +75,21 @@ const Dashboard = () => {
   //       console.log(error);
   //     });
   // }, [user?.email]);
-  // useEffect(() => {
-  //   setLoading(!loading);
-  //   setCount((count) => count + 1);
-  //   fetch(`${process.env.REACT_APP_API}/users?email=${user?.email}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       // setUserDetailsInfo(data);
-  //       // setLoading(false);
-  //       console.log(data);
-  //     });
-  // }, []);
+
+  // fetch(`${process.env.REACT_APP_API}/users?email=${user?.email}`)
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  // setUserInfo(data);
+  // setLoading(false);
+  // console.log(data);
+  // });
+
   // setLoading(!loading);
 
-  // console.log(userDetailsInfo);
+  // console.log(userInfo);
 
   return (
     <div>
-      {/* {userDetailsInfo.map((userInfos) => setUserInfo(userInfos))} */}
       <Navbar />
       <div className="drawer drawer-mobile">
         <input id="bookmart-drawer" type="checkbox" className="drawer-toggle" />
@@ -105,6 +113,7 @@ const Dashboard = () => {
               </p>
             </div>
             {/* //# User Information */}
+            {/* {userInfo.map((userInfos) => console.log(userInfos))} */}
 
             {/* {userInfo.role === "User" && (
               <Link to="/dashboard/my-order">
@@ -114,7 +123,7 @@ const Dashboard = () => {
               </Link>
             )} */}
             {/* //# Seller Information  */}
-            {/* {userInfo[0].role === "Seller" && (
+            {/* {userInfo.role === "Seller" && (
               <>
                 <Link to="/dashboard/add-product">
                   <div className="border-t-2 border-b-2 py-3 my-3 shadow-lg text-center rounded-lg">

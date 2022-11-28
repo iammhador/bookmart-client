@@ -17,6 +17,7 @@ import MyBuyers from "../Pages/Dashboard/MyBuyers";
 import BasicDashboard from "../Pages/Dashboard/BasicDashboard";
 import AllSellers from "../Pages/Dashboard/AllSellers";
 import AllBuyers from "../Pages/Dashboard/AllBuyers";
+import PrivateRoute from "./PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -44,7 +45,11 @@ const router = createBrowserRouter([
       // },
       {
         path: "/products/:categoryName",
-        element: <MatchCategory />,
+        element: (
+          <PrivateRoute>
+            <MatchCategory />
+          </PrivateRoute>
+        ),
         loader: async ({ params }) => {
           return fetch(
             `http://localhost:5000/products?categoryName=${params.categoryName}`
