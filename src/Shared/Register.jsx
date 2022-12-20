@@ -2,7 +2,7 @@ import { React, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { BsGoogle } from "react-icons/bs";
 import { AuthContext } from "../Context/ContextApi";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 const Register = () => {
   const { googleLogin, register, updateProfileAndImage } =
@@ -33,7 +33,7 @@ const Register = () => {
         };
         setUserDetails(userInfo);
         console.log(userCredential);
-        toast.success("Successfully Register");
+        toast.success("Register Successfully");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -63,7 +63,7 @@ const Register = () => {
         if (data.success) {
           register(email, password)
             .then((userCredential) => {
-              toast.success("Successfully Register");
+              toast.success("Register Successfully");
               form.reset("");
               const userInfo = {
                 email: userCredential?.user?.email,
@@ -82,8 +82,6 @@ const Register = () => {
             });
         }
       });
-
-    // console.log(Username, image, email, password, option);
   };
 
   return (

@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         ),
         loader: async ({ params }) => {
           return fetch(
-            `http://localhost:5000/products?categoryName=${params.categoryName}`
+            `https://bookmart-sepia.vercel.app/products?categoryName=${params.categoryName}`
           );
         },
       },

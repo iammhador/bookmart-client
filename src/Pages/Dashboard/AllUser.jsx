@@ -1,7 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import Aos from "aos";
+import React, { useEffect } from "react";
 import profile from "../../Asset/user.png";
 const AllUser = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 2000,
+    });
+  }, []);
+
   const { data: users = [] } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
@@ -14,7 +21,7 @@ const AllUser = () => {
   return (
     <div>
       <div class="container mx-auto px-4 sm:px-8 max-w-3xl">
-        <div class="py-8">
+        <div data-aos="fade-down" class="py-8">
           <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
             <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
               <table class="min-w-full leading-normal">

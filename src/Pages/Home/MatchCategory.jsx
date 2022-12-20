@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import Aos from "aos";
+import React, { useEffect, useState } from "react";
 import { useLoaderData, useLocation } from "react-router-dom";
 import Products from "../Products/products";
 
 const MatchCategory = () => {
   const data = useLoaderData();
-
+  useEffect(() => {
+    Aos.init({
+      duration: 2000,
+    });
+  }, []);
   return (
-    <div className="my-20 w-5/6 mx-auto">
+    <div data-aos="fade-down" className="my-20 w-5/6 mx-auto">
       <div>
         <h2 className="text-5xl font-extrabold text-secondary text-center mb-10 uppercase">
           All Product

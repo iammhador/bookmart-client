@@ -1,16 +1,25 @@
 import React, { useContext } from "react";
+import { useEffect } from "react";
 import { AuthContext } from "../../Context/ContextApi";
+import AOS from "aos";
 
 const Blog = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  }, []);
   const { user } = useContext(AuthContext);
-  console.log(user);
   return (
-    <div className="my-20 w-5/6 mx-auto">
+    <div data-aos="fade-down" className="my-20 w-5/6 mx-auto">
       <h3 className="text-accent text-4xl text-center font-semibold uppercase">
         Blog Section
       </h3>
       <div className="mt-14">
-        <div className="shadow-lg border-2 rounded-lg py-10 px-10 mb-5">
+        <div
+          data-aos="fade-down"
+          className="shadow-lg border-2 rounded-lg py-10 px-10 mb-5"
+        >
           {" "}
           <h1 className="text-2xl md:text-4xl text-gray-800 font-normal mb-3">
             What are the different ways to manage a state in a React
@@ -66,7 +75,10 @@ const Blog = () => {
           </p>
         </div>
 
-        <div className="shadow-lg border-2 rounded-lg py-10 px-10 mb-5">
+        <div
+          data-aos="fade-down"
+          className="shadow-lg border-2 rounded-lg py-10 px-10 mb-5"
+        >
           {" "}
           <h1 className="text-2xl md:text-4xl text-gray-800 font-normal mb-5">
             How does prototypical inheritance work?
@@ -80,7 +92,10 @@ const Blog = () => {
           </p>
         </div>
 
-        <div className="shadow-lg border-2 rounded-lg py-10 px-10 mb-5">
+        <div
+          data-aos="fade-down"
+          className="shadow-lg border-2 rounded-lg py-10 px-10 mb-5"
+        >
           {" "}
           <h1 className="text-2xl md:text-4xl text-gray-800 font-normal mb-3">
             What is a unit test? Why should we write unit tests?
@@ -94,7 +109,10 @@ const Blog = () => {
           </p>
         </div>
 
-        <div className="shadow-lg border-2 rounded-lg py-10 px-10 mb-5">
+        <div
+          data-aos="fade-down"
+          className="shadow-lg border-2 rounded-lg py-10 px-10 mb-5"
+        >
           {" "}
           <h1 className="text-2xl md:text-4xl text-gray-800 font-normal mb-3">
             React vs. Angular vs. Vue?

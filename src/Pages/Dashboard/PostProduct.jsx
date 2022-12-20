@@ -24,22 +24,9 @@ const PostProduct = () => {
       Location: Location,
       DaysOfUse: DaysOfUse,
       ProductPostDate: ProductPostDate,
-      // imgUrl,
     };
 
-    // fetch(`${process.env.REACT_APP_API}/products`, {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(ProductDetails),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //   });
-
-    fetch("http://localhost:5000/products", {
+    fetch(`${process.env.REACT_APP_API}/products`, {
       method: "POST",
       headers: {
         "Content-Type": "Application/json",
@@ -49,14 +36,8 @@ const PostProduct = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        // if (data.acknowledged) {
-        //   toast.success("Your Booking Has Been Added");
-        // } else {
-        //   toast.error("Your Already Booked On This Date");
-        // }
       });
 
-    // console.log(ProductDetails);
     const image = e.target.image.files[0];
     const formData = new FormData();
     formData.append("image", image);
@@ -66,14 +47,7 @@ const PostProduct = () => {
       body: formData,
     })
       .then((res) => res.json())
-      .then((data) => {
-        // console.log(data.data);
-        // setImgUrl(data.data.display_url);
-      });
-
-    // setPostProductDetails(ProductDetails);
-
-    // setPostProductDetails(ProductDetails);
+      .then((data) => {});
   };
 
   return (

@@ -1,9 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import React, { useEffect } from "react";
+import Aos from "aos";
+import { toast } from "react-hot-toast";
 
 const AllSellers = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 2000,
+    });
+  }, []);
   const { data: userData = [], refetch } = useQuery({
     queryKey: [""],
     queryFn: async () => {
@@ -44,7 +49,10 @@ const AllSellers = () => {
       <>
         <div class="container mx-auto px-4 sm:px-8 max-w-3xl">
           <div class="py-8">
-            <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+            <div
+              data-aos="fade-down"
+              class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto"
+            >
               <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
                 <table class="min-w-full leading-normal">
                   <thead>

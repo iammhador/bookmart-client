@@ -1,10 +1,17 @@
-import React, { useContext } from "react";
-import toast from "react-hot-toast";
+import Aos from "aos";
+import React, { useContext, useEffect } from "react";
+import { toast } from "react-hot-toast";
+
 import { AuthContext } from "../../Context/ContextApi";
 
 const ProductDetailsInfo = () => {
   const { user } = useContext(AuthContext);
-  // console.log(user.displayName);
+
+  useEffect(() => {
+    Aos.init({
+      duration: 2000,
+    });
+  }, []);
 
   const handleProductInfo = (e) => {
     e.preventDefault();
@@ -62,8 +69,7 @@ const ProductDetailsInfo = () => {
               console.log(data);
 
               if (data.acknowledged) {
-                toast.success("Product Added Successfully");
-
+                toast.success("Product added successfully");
                 form.reset();
               }
             });
@@ -71,7 +77,7 @@ const ProductDetailsInfo = () => {
       });
   };
   return (
-    <div className="w-5/6 mx-auto my-20 ">
+    <div data-aos="fade-down" className="w-5/6 mx-auto my-20 ">
       <div>
         <h2 className="text-4xl font-bold text-secondary mb-10">
           Add Your Product:

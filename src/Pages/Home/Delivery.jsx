@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
 import deliveryMan from "../../Asset/delivery-man.png";
 const Delivery = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  }, []);
   return (
-    <div className="my-20">
+    <div data-aos="fade-down" className="my-20">
       <div>
         <h2 className="text-5xl font-extrabold text-secondary text-center mb-10 uppercase">
           Delivery Option

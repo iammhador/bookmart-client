@@ -1,10 +1,15 @@
-import React from "react";
+import Aos from "aos";
+import React, { useEffect } from "react";
 
 const MyProductsInfo = ({ myProd }) => {
   const { _id, ProductName, ProductCategory } = myProd;
-  console.log(myProd);
+  useEffect(() => {
+    Aos.init({
+      duration: 2000,
+    });
+  }, []);
   return (
-    <div>
+    <div data-aos="fade-down">
       <div class="container mx-auto px-4 sm:px-8 max-w-3xl">
         <div class="py-8">
           <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">

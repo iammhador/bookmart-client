@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import AllProducts from "../Products/AllProducts";
 import BookModal from "../AddProduct/BookModal";
 
 const AddProducts = () => {
   const [productBooking, setProductBooking] = useState(null);
+
   const { data: categories = [] } = useQuery({
     queryKey: ["categories"],
     queryFn: async () => {

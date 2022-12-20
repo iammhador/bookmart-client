@@ -1,13 +1,20 @@
 import { async } from "@firebase/util";
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import AOS from "aos";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../Context/ContextApi";
 import NoData from "../../Asset/No data-rafiki.svg";
 
 const MyProducts = () => {
   const { user } = useContext(AuthContext);
-  console.log(user?.email);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  }, []);
+
   const { data: myProducts = [], refetch } = useQuery({
     queryKey: ["myProduct"],
     queryFn: async () => {
@@ -47,7 +54,7 @@ const MyProducts = () => {
       {myProducts.length > 0 ? (
         <>
           <div class="container mx-auto px-4 sm:px-8 max-w-3xl">
-            <div class="py-8">
+            <div data-aos="fade-down" class="py-8">
               <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                 <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
                   <table class="min-w-full leading-normal">

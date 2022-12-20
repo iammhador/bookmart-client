@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import toast from "react-hot-toast";
-import { json } from "react-router-dom";
+import { toast } from "react-hot-toast";
 import PrimaryButton from "../../Components/PrimaryButton";
 import { AuthContext } from "../../Context/ContextApi";
 
@@ -55,7 +54,7 @@ const BookModal = ({ productBooking }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        toast.success("Successfully Booked The Items");
+        toast.success("Register Successfully");
         form.reset();
       });
   };

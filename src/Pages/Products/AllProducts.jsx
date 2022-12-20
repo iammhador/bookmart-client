@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CiLocationOn, CiSignpostDuo1, CiClock1 } from "react-icons/ci";
-import { Link } from "react-router-dom";
+
 // import verification from "../../Asset/check.png";
 const AllProducts = ({ cat, setProductBooking }) => {
   const {

@@ -1,8 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
 import CategoryShow from "./CategoryShow";
 
 const Category = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  }, []);
   const { data: categoryDetails = [], refetch } = useQuery({
     queryKey: ["category"],
     queryFn: async () => {
@@ -13,7 +19,7 @@ const Category = () => {
   });
 
   return (
-    <div className="mb-20">
+    <div data-aos="fade-down" className="mb-20">
       <h2 className="text-5xl font-extrabold text-secondary text-center mb-10 uppercase">
         Category
       </h2>
